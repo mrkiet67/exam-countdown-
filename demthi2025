@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Đếm Ngược Thi THPT Quốc Gia 2025</title>
+  <style>
+    :root {
+      --bg-color: #f0f9ff;
+      --text-color: #111827;
+      --countdown-bg: #ffffff;
+      --countdown-color: #dc2626;
+      --table-header: #93c5fd;
+      --table-header-text: #1e3a8a;
+    }
+
+    body.dark-mode {
+      --bg-color: #0f172a;
+      --text-color: #f1f5f9;
+      --countdown-bg: #1e293b;
+      --countdown-color: #f87171;
+      --table-header: #334155;
+      --table-header-text: #facc15;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 30px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    h1 {
+      color: #1d4ed8;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    #countdown {
+      font-family: 'Courier New', monospace;
+      font-size: 2.5em;
+      font-weight: bold;
+      color: var(--countdown-color);
+      margin: 25px 0;
+      background-color: var(--countdown-bg);
+      display: inline-block;
+      padding: 15px 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      margin-top: 40px;
+    }
+
+    table {
+      margin: 0 auto;
+      border-collapse: collapse;
+      margin-top: 20px;
+      background-color: var(--countdown-bg);
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: var(--table-header);
+      color: var(--table-header-text);
+    }
+
+    #toggleDark {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      padding: 4px 10px;
+      font-size: 0.75em;
+      border: none;
+      background-color: #1d4ed8;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #toggleDark:hover {
+      background-color: #2563eb;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+  <button id="toggleDark">🌙</button>
+
+  <h1>Đếm Ngược Thi THPT Quốc Gia 2025</h1>
+  <div id="countdown">Đang tải...</div>
+
+  <h2>Lịch Thi Chính Thức</h2>
+  <table>
+    <tr>
+      <th>Ngày</th>
+      <th>Nội dung</th>
+    </tr>
+    <tr>
+      <td>25/6/2025</td>
+      <td>Làm thủ tục dự thi, sửa sai thông tin</td>
+    </tr>
+    <tr>
+      <td>26/6/2025</td>
+      <td>Buổi sáng: Ngữ văn<br>Buổi chiều: Toán</td>
+    </tr>
+    <tr>
+      <td>27/6/2025</td>
+      <td>Buổi sáng: Tổ hợp (KHTN hoặc KHXH)</td>
+    </tr>
+    <tr>
+      <td>28/6/2025</td>
+      <td>Dự phòng</td>
+    </tr>
+  </table>
+
+  <footer>
+    By: NguyenKiet
+  </footer>
+
+  <script>
+    const countDownDate = new Date("June 25, 2025 00:00:00").getTime();
+
+    const x = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("countdown").innerHTML = "Đã đến ngày thi!";
+        clearInterval(x);
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
+    }, 1000);
+
+    // Dark mode toggle
+    const btn = document.getElementById('toggleDark');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      btn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+    });
+  </script>
+</body>
+</html>
